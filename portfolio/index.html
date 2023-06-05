@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--A keresőben ez a szöveg van a link slstt-->
+    <meta name="description" content="Web designer and developer portfolio of Zoltan N. Veres. Showcase of skills, projects, and contact information.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js" defer></script>
+    <script type="module" src="data.js" defer></script>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <title>Főoldal</title>
+</head>
+
+<body>
+    <header>
+        <!-- Desktop nav -->
+        <div class="hidden md:flex justify-between items-center py-16 px-4 border-b-2 border-black">
+          <div>
+            <span class="text-3xl font-normal tracking-widest">Portfolio</span>
+          </div>
+          <nav  class="flex flex-row gap-20 text-xl">
+            <a class="nav-link" href="#home">Home</a>
+            <a class="nav-link" href="#skills">Skills</a>
+            <a class="nav-link" href="#projects">Projects</a>
+            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link" href="#contact">Contact</a>
+          </nav>
+        </div>
+
+        <!-- Mobile nav -->
+        <div class="flex flex-col md:hidden py-16 border-b-2 border-black">
+          <div class="flex justify-between items-center px-4">
+            <span class="text-3xl font-normal tracking-widest">Portfolio</span>
+            <button id="mobileMenuBtn" class="text-3xl font-bold">☰</button>
+          </div>
+          <nav id="mobileNav" class="hidden flex flex-col text-2xl px-4 space-y-4 items-end">
+            <a class="nav-link" href="#home">Home</a>
+            <a class="nav-link" href="#skills">Skills</a>
+            <a class="nav-link" href="#projects">Projects</a>
+            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link" href="#contact">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <section id="home" class=" ">
+        <div class="hidden md:flex flex-row justify-between pt-20 px-4">
+            <div class="flex flex-col justify-between">
+                <div>
+                    <h1 id="name-desktop" class="">Zoltan N.&nbsp;Veres</h1>
+                    <i id="title-desktop">web designer & developer</i>
+                </div>
+                <div>
+                    <span>Budapest, Hungary</span><br>
+                    <span>vznzoltan@gmail.com</span>
+                </div>
+            </div>
+            <div class="flex justify-end">
+                <img class="w-2/3" src="/portfolio/imgs/left.webp" alt="ascii art profile image">
+            </div>
+        </div>
+        
+        <div class="flex md:hidden flex-col items-center pt-20 px-4">
+            <h1 id="name-mobile" class="text-6xl text-center">Zoltan N.&nbsp;Veres</h1>
+            <i class="uppercase text-center text-2xl">web designer & developer</i>
+            <div class="w-full">
+                <img class="my-8" src="/portfolio/imgs/top.webp" alt="ascii art profile image">
+            </div>
+            <div class="text-center">
+                <span>Budapest, Hungary</span><br>
+                <span>vznzoltan@gmail.com</span>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills" class="" >
+        <div class="flex flex-col justify-between pt-12 px-4 md:space-y-4">
+            <h2 class="text-center sm:text-left text-6xl font-black">Skills</h2>
+            <div>
+                <h3 class="skill-title">web</h3>
+                <div id="web" class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:grid-cols-8 mt-4 py-2">
+
+                </div>
+            </div>
+            <div>
+                <h3 class="skill-title">design</h3>
+                <div id="design" class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:grid-cols-8 mt-4 py-2">
+
+                </div>
+            </div>
+            <div>
+                <h3 class="skill-title">other</h3>
+                <div id="other" class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:grid-cols-8 mt-4 py-2">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="projects">
+        <div class="flex flex-col justify-between pt-12 px-4">
+            <h2 class="text-center sm:text-left text-6xl font-black">Projects</h2>
+            <div class="project-grid grid md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center	">
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <div class="flex flex-col justify-between pt-12 px-4">
+            <h2 class="text-center sm:text-left text-6xl font-black">About</h2>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="flex flex-col justify-between pt-12 px-4">
+            <h2 class="text-center sm:text-left text-6xl font-black">Contact</h2>
+        </div>
+    </section>
+    
+</body>
+

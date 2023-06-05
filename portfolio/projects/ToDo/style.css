@@ -1,0 +1,115 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  #container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  #task-form {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  #task-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    color: #333333;
+    font-size: 14px;
+  }
+  
+  #add-button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4caf50;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #add-button:hover {
+    background-color: #45a049;
+  }
+  
+  #task-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .task-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .task-item.complete {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    background-color: #c8c8c8;
+  }
+  
+  .task-item .task-name {
+    flex-grow: 1;
+    color: #333333;
+    font-size: 16px;
+  }
+  
+  .task-item .task-actions {
+    display: flex;
+  }
+  
+  .task-item .task-actions button {
+    background-color: transparent;
+    color: #333333;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-size: 16px;
+  }
+  
+  .task-item .task-actions button:first-child {
+    margin-right: 10px;
+  }
+  
+  .task-item .task-actions button:last-child {
+    color: #ff4d4d;
+  }
+  
+  .task-item .task-actions button:hover {
+    color: #555555;
+  }
+  
+  .fa-check:before {
+    content: '\f00c';
+  }
+  
+  .fa-trash:before {
+    content: '\f2ed';
+  }
+  
