@@ -60,7 +60,7 @@ fetch(baseUrl)
               statContainer.appendChild(statElement);
             }
             
-            statContainer.classList.add('flex','flex-row','gap-4','text-center');
+            statContainer.classList.add('flex','flex-row','gap-4','text-center','border-2','p-2');
             
             container.appendChild(statContainer);
             pokemonsContainer.appendChild(container);
