@@ -103,7 +103,7 @@ export const projectsArr = [
         title: "Project 3",
         image: "./imgs/bg3.jpg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        link: "./projects/Calculator/index.html"
+        link: "./projects/PokeApp/index.html"
     },
     {
         title: "Project 4",
