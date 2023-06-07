@@ -1,61 +1,74 @@
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0';
 
-// Fetch data from the base URL
 fetch(baseUrl)
   .then(response => {
-    // Check the response
     if (!response.ok) {
       throw new Error("Request Error");
     }
     return response.json();
   })
   .then(data => {
-    // Extract the Pokémon URLs from the data object
     const pokemonUrls = data.results.map(pokemon => pokemon.url);
-
-    // Function to fetch and display individual Pokémon data
     const fetchPokemonData = (url) => {
       fetch(url)
         .then(response => {
-          // Check the response
+
           if (!response.ok) {
             throw new Error("Request Error");
           }
           return response.json();
         })
         .then(pokemonData => {
-          // Display the data on the pokemonsContainer DOM element
+          //console.log(pokemonData);
           const pokemonsContainer = document.getElementById('pokemons');
-
-          // Extract the Pokémon name and image URL
           const pokemonName = pokemonData.name;
           const pokemonImageUrl = pokemonData.sprites.front_default;
-
-          // Create an <li> element with the Pokémon name
-          const listItem = document.createElement('li');
-
-          const nameParagraph = document.createElement('p');
-          nameParagraph.textContent = pokemonName;
-
-          listItem.appendChild(nameParagraph);
-
-          // Add the <img> element if there is an available image
+          
           if (pokemonImageUrl) {
+            const container = document.createElement('div');
+            const name = document.createElement('h3');
             const image = document.createElement('img');
+            const statContainer = document.createElement('div');
+
+            container.classList.add('flex','flex-col','items-center','mb-8')
+            name.classList.add('font-bold','text-lg')
+            name.textContent = pokemonName;
             image.src = pokemonImageUrl;
             image.alt = pokemonName;
-            listItem.appendChild(image);
+
+            container.appendChild(name);
+            container.appendChild(image);
+            
+            for (let i = 0; i < pokemonData.stats.length; i++) {
+              //console.log(pokemonData.stats[i].stat.name +" - "+ pokemonData.stats[i].base_stat);
+              let statElement = document.createElement('div')
+              let statName = document.createElement('span')
+              let statValue = document.createElement('span')
+
+              statElement.classList.add('grid','grid-rows-2')
+              statName.textContent = `${pokemonData.stats[i].stat.name}`
+              statValue.textContent = `${pokemonData.stats[i].base_stat}`
+              statName.classList.add('block')
+              statValue.classList.add('block')
+
+              statElement.appendChild(statValue)
+              statElement.appendChild(statName)
+              statContainer.appendChild(statElement)
+
+              //console.log(statContainer);
+            }
+            statContainer.classList.add('flex','flex-row','gap-4','text-center')
+            
+            container.appendChild(statContainer)
+            pokemonsContainer.appendChild(container);
           }
 
-          // Add the <li> element to the pokemonsContainer
-          pokemonsContainer.appendChild(listItem);
+
         })
         .catch(error => {
           console.log(error);
         });
     };
-
-    // Call fetchPokemonData for each Pokémon URL
     pokemonUrls.forEach(url => {
       fetchPokemonData(url);
     });
