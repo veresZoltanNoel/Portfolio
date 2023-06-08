@@ -1,3 +1,4 @@
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
 :root{
 --normal-color:#919aa2;
 --fighting-color:#cf3e69;
@@ -17,6 +18,9 @@
 --dragon-color:#036dc5;
 --dark-color:#5a5266;
 --fairy-color:#ed90e7;
+}
+h1{
+    font-family: 'Pokemon Solid', sans-serif;
 }
 section{
 max-width: 1440px;

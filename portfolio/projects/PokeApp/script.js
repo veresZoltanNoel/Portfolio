@@ -32,7 +32,7 @@ fetch(baseUrl)
 
           // Get the container element to hold Pokémon information
           const pokemonsContainer = document.getElementById('pokemons');
-
+          
           // Extract the Pokémon's name and image URL from the data
           const pokemonName = pokemonData.name;
           const pokemonImageUrl = pokemonData.sprites.front_default;
@@ -97,6 +97,7 @@ fetch(baseUrl)
                 const statValue = document.createElement('span');
 
                 // Add classes and content to the statElement
+                statContainer.classList.add('flex', 'flex-row', 'gap-4', 'text-center', 'p-2');
                 statElement.classList.add('grid', 'grid-rows-2');
                 statName.textContent = stat.name;
                 statValue.textContent = base_stat;
