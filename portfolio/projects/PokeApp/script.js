@@ -1,5 +1,20 @@
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0';
 
+function hexToRgb(hex) {
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const r = parseInt(result[1], 16);
+  const g = parseInt(result[2], 16);
+  const b = parseInt(result[3], 16);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+function mixColors(color1, color2) {
+  const r = Math.round((color1.r + color2.r) / 2);
+  const g = Math.round((color1.g + color2.g) / 2);
+  const b = Math.round((color1.b + color2.b) / 2);
+  return `rgb(${r}, ${g}, ${b})`;
+}
 // Fetch data from the base URL
 fetch(baseUrl)
   .then(response => {
@@ -46,7 +61,6 @@ fetch(baseUrl)
             cardTopDesign.style.borderRadius = "0 0 100% 100%";
             cardTopDesign.style.zIndex = "-1";
 
-
             container.classList.add('poke-container','relative','flex', 'flex-col', 'items-center','py-12','bg-gray-100');
             hpDiv.classList.add("px-2", "py-1", "rounded-full", 'flex', 'flex-row', 'gap-2', 'bg-gray-400');
             hpText.classList.add("block");
@@ -85,14 +99,26 @@ fetch(baseUrl)
                 statContainer.appendChild(statElement);
               }
             }
-
+            let typeCount = [];
             for (const { type } of pokemonData.types) {
+              typeCount.push(type.name);
+
               const typeImg = document.createElement('img');
               typeImg.style.width = '25px';
               typeImg.src = `pokemonTypes/${type.name}.png`;
               name.classList.add(`type-${type.name}`);
               typeImgContainer.appendChild(typeImg);
-              cardTopDesign.style.backgroundColor= `var(--${type.name}-color)`
+              if (typeCount.length === 1) {
+                cardTopDesign.style.backgroundColor= `var(--${type.name}-color)`
+              }
+              else{
+                let color1 = hexToRgb(getComputedStyle(document.documentElement).getPropertyValue(`--${typeCount[0]}-color`));
+                let color2 = hexToRgb(getComputedStyle(document.documentElement).getPropertyValue(`--${typeCount[1]}-color`));
+                console.log(`--${typeCount[1]}-color`);
+                const mixedColor  = mixColors(color1, color2);
+                console.log(mixedColor);
+                cardTopDesign.style.backgroundColor= `${mixedColor}`
+              }
             }
 
             container.appendChild(typeImgContainer)
@@ -114,3 +140,5 @@ fetch(baseUrl)
   .catch(error => {
     console.log(error);
   });
+
+
