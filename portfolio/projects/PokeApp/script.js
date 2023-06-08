@@ -60,7 +60,7 @@ fetch(baseUrl)
 
             // Add classes to the container element
             container.classList.add('poke-container', 'relative', 'flex', 'flex-col', 'items-center', 'py-12', 'bg-gray-100');
-
+            container.style.boxShadow = "0 10px 30px 5px rgba(0, 0, 0, 0.2)";
             // Add classes and content to the hpDiv element
             hpDiv.classList.add("px-2", "py-1", "rounded-full", 'flex', 'flex-row', 'gap-2', 'bg-gray-400');
             hpText.classList.add("block");
