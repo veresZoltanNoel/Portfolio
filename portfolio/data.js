@@ -100,14 +100,14 @@ export const projectsArr = [
         link: "./projects/ToDo/index.html"
     },
     {
-        title: "Project 3",
-        image: "./imgs/bg3.jpg",
+        title: "Pokemon APP-i",
+        image: "./imgs/uc.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         link: "./projects/PokeApp/index.html"
     },
     {
         title: "Project 4",
-        image: "./imgs/bg4.jpg",
+        image: "./imgs/uc.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         link: "./projects/Calculator/index.html"
     }
