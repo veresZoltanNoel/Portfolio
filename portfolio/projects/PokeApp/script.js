@@ -38,7 +38,16 @@ fetch(baseUrl)
             const hpValue = document.createElement("span");
             const typeImgContainer = document.createElement("div");
 
-            container.classList.add('flex', 'flex-col', 'items-center', 'border-4', 'rounded-3xl', 'py-12');
+            const cardTopDesign = document.createElement("div");
+            cardTopDesign.style.position = "absolute";
+            cardTopDesign.style.top = "0";
+            cardTopDesign.style.width = "100%";
+            cardTopDesign.style.height = "120px";
+            cardTopDesign.style.borderRadius = "0 0 100% 100%";
+            cardTopDesign.style.zIndex = "-1";
+
+
+            container.classList.add('poke-container','relative','flex', 'flex-col', 'items-center','py-12','bg-gray-100');
             hpDiv.classList.add("px-2", "py-1", "rounded-full", 'flex', 'flex-row', 'gap-2', 'bg-gray-400');
             hpText.classList.add("block");
             hpValue.classList.add("block");
@@ -83,11 +92,14 @@ fetch(baseUrl)
               typeImg.src = `pokemonTypes/${type.name}.png`;
               name.classList.add(`type-${type.name}`);
               typeImgContainer.appendChild(typeImg);
+              cardTopDesign.style.backgroundColor= `var(--${type.name}-color)`
             }
 
             container.appendChild(typeImgContainer)
             container.appendChild(statContainer);
+            container.appendChild(cardTopDesign)
             pokemonsContainer.appendChild(container);
+
           }
         })
         .catch(error => {
