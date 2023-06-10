@@ -104,11 +104,5 @@ export const projectsArr = [
         image: "./imgs/uc.jpeg",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         link: "./projects/PokeApp/index.html"
-    },
-    {
-        title: "Project 4",
-        image: "./imgs/uc.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        link: "./projects/Calculator/index.html"
     }
 ];

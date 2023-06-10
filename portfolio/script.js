@@ -145,3 +145,14 @@ projectsArr.forEach((project) => {
   projectGrid.appendChild(card);
 });
 
+const experienceTitles = document.querySelectorAll('.experience-title');
+
+    // Attach click event listener to each title element
+    experienceTitles.forEach((title) => {
+        title.addEventListener('click', () => {
+            // Get the corresponding description element
+            const description = title.nextElementSibling;
+            // Toggle the 'hidden' class on the description element
+            description.classList.toggle('hidden');
+        });
+    });

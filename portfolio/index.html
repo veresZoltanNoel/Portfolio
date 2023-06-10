@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!--A keresőben ez a szöveg van a link slstt-->
     <meta name="description" content="Web designer and developer portfolio of Zoltan N. Veres. Showcase of skills, projects, and contact information.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script type="module" src="script.js" defer></script>
     <script type="module" src="data.js" defer></script>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <title>Főoldal</title>
+    <title>Portfolio</title>
 </head>
 
 <body>
@@ -53,15 +52,15 @@
                     <i id="title-desktop">web designer & developer</i>
                 </div>
                 <div>
-                    <span>Budapest, Hungary</span><br>
-                    <span>vznzoltan@gmail.com</span>
+                    <span class="text-xs italic">Budapest, Hungary</span><br>
+                    <span class="text-xs italic">vznzoltan@gmail.com</span>
                 </div>
             </div>
             <div class="flex justify-end">
                 <img class="w-2/3" src="imgs\left.webp" alt="ascii art profile image">
             </div>
         </div>
-        
+
         <div class="flex md:hidden flex-col items-center pt-20 px-4">
             <h1 id="name-mobile" class="text-6xl text-center">Zoltan N.&nbsp;Veres</h1>
             <i class="uppercase text-center text-2xl">web designer & developer</i>
@@ -69,8 +68,8 @@
                 <img class="my-8" src="imgs/top.webp" alt="ascii art profile image">
             </div>
             <div class="text-center">
-                <span>Budapest, Hungary</span><br>
-                <span>vznzoltan@gmail.com</span>
+                <span class="text-xs italic">Budapest, Hungary</span><br>
+                <span class="text-xs italic">vznzoltan@gmail.com</span>
             </div>
         </div>
     </section>
@@ -109,12 +108,56 @@
         <div class="flex flex-col justify-between pt-12 px-4">
             <h2 class="text-center sm:text-left text-6xl font-black">About</h2>
         </div>
+        <div class="about-container grid grid-cols-3 px-4">
+            <div class="">
+                <h3 class="font-bold text-3xl underline">Who am I?</h3>
+                <p class="mb-4">
+                    I'm an enthusiastic web developer with a deep passion for crafting exceptional online experiences. My expertise lies in HTML, CSS, and JavaScript, and I'm continually honing my skills in these areas because one day i want to be a professional web developer.
+                </p>
+                <p>
+                    Driven by a thirst for knowledge, I possess a natural ability to grasp new concepts swiftly. When confronted with a problem, I thrive on finding innovative solutions by leveraging my resourcefulness and extensive research capabilities. I firmly believe that obstacles are opportunities for growth, and I approach each challenge with a tenacious and solution-oriented mindset.
+                </p>
+            </div>
+            <div class="">
+                <img class="w-2/3 mx-auto  border-black rounded-full" src="imgs/top.webp" alt="">
+            </div>
+            <div class="flex flex-col gap-4">
+                <h3 class="font-bold text-3xl underline">Experience</h3>
+                <div class="">
+                    <h4 class="font-bold experience-title cursor-pointer">Web Designer / Developer <span class="font-normal text-xs italic">at Power Biztonságtechnika Kft.</span></h4>
+                    <div class="hidden experience-description">
+                        <p class="mb-4 mt-2">
+                            During my tenure, I played a key role in developing and maintaining a PHP Laravel + Vite webshop. I designed the web front-end using modern technologies (HTML5, CSS3 + TailwindCSS, JavaScript ES6) while following corporate guidelines for semantics and accessibility. Additionally, I managed the office IT environment, ensuring system and network security. I provided valuable UX recommendations to improve the user experience and actively contributed to marketing web activities, achieving successful outcomes and company growth. Overall, my experience at POWER showcased my expertise in web development, IT management, UX principles, and marketing, positively impacting organizational success.
+                        </p>
+                    </div>
+                    <span class="-mt-2 text-xs">Sep 2022 - Present</span>
+                </div>
+                <div class="">
+                    <h4 class="font-bold experience-title cursor-pointer">Programming Teacher <span class="font-normal text-xs italic">at Logiscool Ltd.</span></h4>
+                    <div class="hidden experience-description">
+                        <p class="mt-2">
+                            As an educator, I had the privilege of teaching elementary school students the fundamentals of JavaScript programming. I found great joy in using programming games as an engaging and enjoyable method to introduce them to basic algorithms and demonstrate the power of logical reasoning. It's incredibly rewarding to witness their understanding grow as they apply these principles and prove theorems through coding.
+                        </p>
+                    </div>
+                    <span class="-mt-2 text-xs">Mar 2022 - Sep 2022</span>
+                </div>
+                <div class="">
+                    <h4 class="font-bold experience-title cursor-pointer">Customer Sales Representative <span class="font-normal text-xs italic">at Arrow Electronics</span></h4>
+                    <div class="hidden experience-description">
+                        <p class="mb-4 mt-2">
+                            During my tenure, I excelled in a dynamic role within the Sales Work Bench (SWB) system. From order inception to accounting and modifications, I thrived in this exhilarating environment. Leveraging Excel, I drove data insights and business growth through intricate calculations, strategic statements, and reports. Utilizing Pivot tables, I extracted meaningful patterns and trends. With macros, I streamlined processes and boosted productivity, eliminating inefficiencies.
+                        </p>
+                    </div>
+                    <span class="-mt-2 text-xs">Jun 2021 - Mar 2022</span>
+                </div>
+            </div>
+        </div>
     </section>
     <section id="contact">
         <div class="flex flex-col justify-between pt-12 px-4">
             <h2 class="text-center sm:text-left text-6xl font-black">Contact</h2>
         </div>
     </section>
-    
+
 </body>
 

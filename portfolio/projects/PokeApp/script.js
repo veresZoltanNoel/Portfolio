@@ -1,5 +1,32 @@
 // Define the base URL of the PokeAPI
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0';
+const pokemonTypes = [
+  "normal", "fire", "water", "electric", "grass", "ice", "fighting", "poison", "ground", "flying",
+  "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy"
+];
+
+generateFilterBar(pokemonTypes);
+
+const filterButtons = document.querySelectorAll(".filter-button");
+const filteredPokemons = document.getElementById("filtered-pokemons");
+let filteredPokemontypes = [];
+
+filterButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    const selectedType = button.id;
+    button.classList.toggle('active');
+
+    // Toggle the selection
+    if (filteredPokemontypes.includes(selectedType)) {
+      filteredPokemontypes = filteredPokemontypes.filter(type => type !== selectedType);
+    } else {
+      filteredPokemontypes.push(selectedType);
+    }
+
+    filterPokemons(filteredPokemontypes);
+  });
+});
+
 
 // Fetch data from the base URL
 fetch(baseUrl)
@@ -32,11 +59,10 @@ fetch(baseUrl)
 
           // Get the container element to hold Pokémon information
           const pokemonsContainer = document.getElementById('pokemons');
-          
+
           // Extract the Pokémon's name and image URL from the data
           const pokemonName = pokemonData.name;
           const pokemonImageUrl = pokemonData.sprites.front_default;
-
           // Check if the Pokémon has an image URL
           if (pokemonImageUrl) {
             // Create HTML elements to display Pokémon name, image, and stats
@@ -196,4 +222,76 @@ function mixColors(color1, color2) {
   const g = Math.round((color1.g + color2.g) / 2);
   const b = Math.round((color1.b + color2.b) / 2);
   return { r, g, b };
+}
+
+// This function generates a filter bar based on the given types.
+function generateFilterBar(types) {
+  let target = document.getElementById('filter-bar');
+
+  // Loop through each type in the types array.
+  for (let i = 0; i < types.length; i++) {
+    const filterBtn = document.createElement('button');
+    filterBtn.classList.add('filter-button', 'rounded-md', 'border-2', 'text-lg', 'font-bold');
+    filterBtn.id = types[i];
+    filterBtn.textContent = types[i];
+    filterBtn.style.backgroundColor = `var(--${types[i]}-color)`;
+
+    // Append the filter button to the target element.
+    target.appendChild(filterBtn);
+
+    // Add a click event listener to the filter button.
+    filterBtn.addEventListener("click", () => {
+      filterBtn.classList.toggle('active');
+
+      // Get all the buttons with the 'active' class and create an array of their IDs.
+      const selectedTypes = Array.from(target.getElementsByClassName('active')).map(button => button.id);
+
+      // Call the filterPokemons function with the selected types.
+      filterPokemons(selectedTypes);
+    });
+  }
+}
+
+// This function filters the pokemons based on the given types.
+function filterPokemons(types) {
+  const pokemonsContainer = document.getElementById('pokemons');
+  const pokemons = pokemonsContainer.getElementsByClassName('poke-container');
+
+  // Loop through each pokemon.
+  Array.from(pokemons).forEach(pokemon => {
+    const typeImgContainer = pokemon.getElementsByClassName('grid')[0];
+    const typeImages = typeImgContainer.getElementsByTagName('img');
+
+    let hasTypes = true;
+
+    // Loop through each type image of the pokemon.
+    Array.from(typeImages).forEach(image => {
+      const type = image.getAttribute('src').split("/").pop().split(".")[0];
+
+      // Check if the pokemon has any of the selected types.
+      if (types.length > 0 && !types.includes(type)) {
+        hasTypes = false;
+      }
+    });
+
+    // Show or hide the pokemon based on the selected types.
+    if (hasTypes || types.length === 0) {
+      pokemon.style.display = 'flex';
+    } else {
+      pokemon.style.display = 'none';
+    }
+  });
+}
+
+// This function resets the filter buttons and displays all the pokemons.
+function resetFilters() {
+  const filterButtons = document.querySelectorAll(".filter-button");
+
+  // Remove the 'active' class from all filter buttons.
+  filterButtons.forEach(button => {
+    button.classList.remove('active');
+  });
+
+  // Reset the pokemons by calling the filterPokemons function with an empty array of types.
+  filterPokemons([]);
 }
