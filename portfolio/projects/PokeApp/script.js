@@ -347,23 +347,3 @@ function sortPokemons(option) {
     pokemonsContainer.appendChild(pokemon);
   });
 }
-function sortPokemonsByName() {
-  const pokemonsContainer = document.getElementById("pokemons");
-  const pokemons = Array.from(pokemonsContainer.getElementsByClassName("poke-container"));
-
-  pokemons.sort((a, b) => {
-    const nameA = a.getElementsByTagName("h3")[0].textContent.toLowerCase();
-    const nameB = b.getElementsByTagName("h3")[0].textContent.toLowerCase();
-    return nameA.localeCompare(nameB);
-  });
-
-  // Remove existing pokemons from the container
-  while (pokemonsContainer.firstChild) {
-    pokemonsContainer.removeChild(pokemonsContainer.firstChild);
-  }
-
-  // Append sorted pokemons back to the container
-  pokemons.forEach(pokemon => {
-    pokemonsContainer.appendChild(pokemon);
-  });
-}
