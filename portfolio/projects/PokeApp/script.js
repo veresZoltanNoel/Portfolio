@@ -28,6 +28,13 @@ filterButtons.forEach(button => {
 });
 
 
+const sortBySelect = document.getElementById("sort-by");
+sortBySelect.addEventListener("change", () => {
+  const selectedOption = sortBySelect.value;
+  sortPokemons(selectedOption);
+});
+
+
 // Fetch data from the base URL
 fetch(baseUrl)
   .then(response => {
@@ -89,8 +96,8 @@ fetch(baseUrl)
             container.style.boxShadow = "0 10px 30px 5px rgba(0, 0, 0, 0.2)";
             // Add classes and content to the hpDiv element
             hpDiv.classList.add("px-2", "py-1", "rounded-full", 'flex', 'flex-row', 'gap-2', 'bg-gray-400');
-            hpText.classList.add("block");
-            hpValue.classList.add("block");
+            hpText.classList.add("block","stat-name");
+            hpValue.classList.add("block","stat-value");
             hpText.textContent = pokemonData.stats[0].stat.name;
             hpValue.textContent = pokemonData.stats[0].base_stat;
 
@@ -130,7 +137,7 @@ fetch(baseUrl)
 
                 // Add classes to the statName and statValue elements
                 statName.classList.add('block');
-                statValue.classList.add('block', 'font-bold');
+                statValue.classList.add('block', 'font-bold','stat-value');
 
                 // Append child elements to the statElement
                 statElement.appendChild(statValue);
@@ -231,9 +238,9 @@ function generateFilterBar(types) {
   // Loop through each type in the types array.
   for (let i = 0; i < types.length; i++) {
     const filterBtn = document.createElement('button');
-    filterBtn.classList.add('filter-button', 'rounded-md', 'border-2', 'text-lg', 'font-bold');
+    filterBtn.classList.add('filter-button','relative','flex','items-center','rounded-md', 'text-lg', 'font-bold','p-2');
     filterBtn.id = types[i];
-    filterBtn.textContent = types[i];
+    filterBtn.innerHTML = `<img width="25px" class="flex-none" src="pokemonTypes/${types[i]}.png" alt="Image"> <span class="grow">${types[i]}</span>`;
     filterBtn.style.backgroundColor = `var(--${types[i]}-color)`;
 
     // Append the filter button to the target element.
@@ -242,6 +249,7 @@ function generateFilterBar(types) {
     // Add a click event listener to the filter button.
     filterBtn.addEventListener("click", () => {
       filterBtn.classList.toggle('active');
+      filterBtn.classList.toggle('clicked');
 
       // Get all the buttons with the 'active' class and create an array of their IDs.
       const selectedTypes = Array.from(target.getElementsByClassName('active')).map(button => button.id);
@@ -283,15 +291,79 @@ function filterPokemons(types) {
   });
 }
 
-// This function resets the filter buttons and displays all the pokemons.
-function resetFilters() {
-  const filterButtons = document.querySelectorAll(".filter-button");
+function sortPokemons(option) {
+  const pokemonsContainer = document.getElementById("pokemons");
+  const pokemons = Array.from(pokemonsContainer.getElementsByClassName("poke-container"));
 
-  // Remove the 'active' class from all filter buttons.
-  filterButtons.forEach(button => {
-    button.classList.remove('active');
+  // Sort the pokemons based on the selected option
+  switch (option) {
+    case "name":
+      // Sorting by name remains the same as before
+      pokemons.sort((a, b) => {
+        const nameA = a.getElementsByTagName("h3")[0].textContent.toLowerCase();
+        const nameB = b.getElementsByTagName("h3")[0].textContent.toLowerCase();
+        return nameA.localeCompare(nameB);
+      });
+      break;
+    case "attackdmg":
+      // Sorting by attack damage remains the same as before
+      pokemons.sort((a, b) => {
+        const attackDmgA = parseInt(a.getElementsByClassName("stat-value")[1].textContent);
+        const attackDmgB = parseInt(b.getElementsByClassName("stat-value")[1].textContent);
+        return attackDmgB - attackDmgA;
+      });
+      break;
+    case "defense":
+      // Sorting by defense
+      pokemons.sort((a, b) => {
+        const defenseA = parseInt(a.getElementsByClassName("stat-value")[2].textContent);
+        const defenseB = parseInt(b.getElementsByClassName("stat-value")[2].textContent);
+        return defenseB - defenseA;
+      });
+      break;
+    case "speed":
+      // Sorting by speed
+      pokemons.sort((a, b) => {
+        const speedA = parseInt(a.getElementsByClassName("stat-value")[3].textContent);
+        const speedB = parseInt(b.getElementsByClassName("stat-value")[3].textContent);
+        return speedB - speedA;
+      });
+      break;
+    case "hp":
+      // Sorting by HP
+      pokemons.sort((a, b) => {
+        const hpA = parseInt(a.getElementsByClassName("stat-value")[0].textContent);
+        const hpB = parseInt(b.getElementsByClassName("stat-value")[0].textContent);
+        return hpB - hpA;
+      });
+      break;
+    default:
+      // Do nothing for unknown options
+      return;
+  }
+
+  // Append the sorted pokemons back to the container
+  pokemons.forEach(pokemon => {
+    pokemonsContainer.appendChild(pokemon);
+  });
+}
+function sortPokemonsByName() {
+  const pokemonsContainer = document.getElementById("pokemons");
+  const pokemons = Array.from(pokemonsContainer.getElementsByClassName("poke-container"));
+
+  pokemons.sort((a, b) => {
+    const nameA = a.getElementsByTagName("h3")[0].textContent.toLowerCase();
+    const nameB = b.getElementsByTagName("h3")[0].textContent.toLowerCase();
+    return nameA.localeCompare(nameB);
   });
 
-  // Reset the pokemons by calling the filterPokemons function with an empty array of types.
-  filterPokemons([]);
+  // Remove existing pokemons from the container
+  while (pokemonsContainer.firstChild) {
+    pokemonsContainer.removeChild(pokemonsContainer.firstChild);
+  }
+
+  // Append sorted pokemons back to the container
+  pokemons.forEach(pokemon => {
+    pokemonsContainer.appendChild(pokemon);
+  });
 }

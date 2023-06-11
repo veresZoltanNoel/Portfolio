@@ -13,10 +13,17 @@
     <div class="flex justify-center">
         <h1 style="font-size: 6rem;">Pokemon APP-i</h1>
     </div>
-    <section >
+
+    <section>
         <div id="filter-bar" class="grid grid-cols-6 gap-2 px-20 pt-10"></div>
-        <div id="filter-container" class="px-20 py-8 ">
-            <h2>Filter: <span id="filtered-pokemons"></span></h2>
+        <div class="px-20 py-10">
+            <select id="sort-by" class="">
+                <option value="name">Name</option>
+                <option value="attackdmg">Attack Damage</option>
+                <option value="defense">Defense</option>
+                <option value="hp">HP</option>
+                <option value="speed">Speed</option>
+            </select>
         </div>
         <div id="pokemons" class="grid sm:grid-cols-2 md:grid-cols-4 gap-8 px-20">
 
