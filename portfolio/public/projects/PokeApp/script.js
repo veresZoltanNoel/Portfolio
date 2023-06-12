@@ -28,11 +28,23 @@ filterButtons.forEach(button => {
 });
 
 
-const sortBySelect = document.getElementById("sort-by");
-sortBySelect.addEventListener("change", () => {
-  const selectedOption = sortBySelect.value;
-  sortPokemons(selectedOption);
+
+// Add click event listeners to each list item
+const sortItems = document.querySelectorAll("#sort-by li");
+sortItems.forEach(li => {
+  li.addEventListener("click", function() {
+    const selectedOption = this.getAttribute("data-value");
+    // Remove active class from all li elements
+    sortItems.forEach(item => {
+      item.classList.remove("active");
+    });
+    // Add active class to the clicked li element
+    this.classList.add("active");
+
+    sortPokemons(selectedOption);
+  });
 });
+
 
 
 // Fetch data from the base URL
@@ -124,6 +136,7 @@ fetch(baseUrl)
 
             // Loop through the stats of the Pokémon and create elements for 3 of the stats
             for (const { stat, base_stat } of pokemonData.stats) {
+
               if (!['special-attack', 'special-defense', 'hp'].includes(stat.name)) {
                 const statElement = document.createElement('div');
                 const statName = document.createElement('span');
@@ -212,7 +225,6 @@ fetch(baseUrl)
 
 // Utility function to convert a hexadecimal color code to RGB format
 function hexToRgb(hex) {
-  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   if (result) {
     const r = parseInt(result[1], 16);
@@ -291,6 +303,7 @@ function filterPokemons(types) {
   });
 }
 
+// This function filters the pokemons based on the selected option.
 function sortPokemons(option) {
   const pokemonsContainer = document.getElementById("pokemons");
   const pokemons = Array.from(pokemonsContainer.getElementsByClassName("poke-container"));

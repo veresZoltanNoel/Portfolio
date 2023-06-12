@@ -46,3 +46,23 @@ margin: 0 auto;
   background: url(pokemonTypes/close.svg) no-repeat center;
   background-size: cover;
 }
+
+
+.filter-list li {
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  -webkit-transition: background-color 0.2s ease;
+  -moz-transition: background-color 0.2s ease;
+  -ms-transition: background-color 0.2s ease;
+  -o-transition: background-color 0.2s ease;
+  width: 150px; /* Set a fixed width for the li elements */
+}
+
+
+.filter-list li:hover {
+  background-color: #d1d1d1;
+}
