@@ -19,6 +19,15 @@
 --dark-color:#5a5266;
 --fairy-color:#ed90e7;
 }
+body {
+    background-image: url("./imgs/body_bg.png");
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
 h1{
     font-family: 'Pokemon Solid', sans-serif;
 }
