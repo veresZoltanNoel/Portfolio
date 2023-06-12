@@ -104,60 +104,62 @@
             </div>
         </div>
     </section>
-    <section id="about">
-        <div class="flex flex-col justify-between pt-12 px-4">
+    <section id="about" class="">
+        <div class="flex flex-col justify-between pt-12 px-4 md:space-y-4">
             <h2 class="text-center sm:text-left text-6xl font-black">About</h2>
-        </div>
-        <div class="about-container grid grid-cols-3 px-4">
-            <div class="">
-                <h3 class="font-bold text-3xl underline">Who am I?</h3>
-                <p class="mb-4">
-                    I'm an enthusiastic web developer with a deep passion for crafting exceptional online experiences. My expertise lies in HTML, CSS, and JavaScript, and I'm continually honing my skills in these areas because one day i want to be a professional web developer.
-                </p>
-                <p>
-                    Driven by a thirst for knowledge, I possess a natural ability to grasp new concepts swiftly. When confronted with a problem, I thrive on finding innovative solutions by leveraging my resourcefulness and extensive research capabilities. I firmly believe that obstacles are opportunities for growth, and I approach each challenge with a tenacious and solution-oriented mindset.
-                </p>
-            </div>
-            <div class="">
-                <img class="w-2/3 mx-auto  border-black rounded-full" src="imgs/top.webp" alt="">
-            </div>
-            <div class="flex flex-col gap-4">
-                <h3 class="font-bold text-3xl underline">Experience</h3>
+            <div class="grid grid-cols-1  md:grid-cols-2 gap-10 px-12 mb-10">
                 <div class="">
-                    <h4 class="font-bold experience-title cursor-pointer">Web Designer / Developer <span class="font-normal text-xs italic">at Power Biztonságtechnika Kft.</span></h4>
-                    <div class="hidden experience-description">
-                        <p class="mb-4 mt-2">
+                    <h3 class="font-bold text-3xl underline mb-4">Who am I?</h3>
+                    <p>
+                        I'm an enthusiastic web developer with a deep passion for crafting exceptional online experiences. My expertise lies in HTML, CSS, and JavaScript, and I'm continually honing my skills in these areas because one day I want to be a professional web developer.
+                    </p>
+                    <p class="mt-4">
+                        Driven by a thirst for knowledge, I possess a natural ability to grasp new concepts swiftly. When confronted with a problem, I thrive on finding innovative solutions by leveraging my resourcefulness and extensive research capabilities. I firmly believe that obstacles are opportunities for growth, and I approach each challenge with a tenacious and solution-oriented mindset.
+                    </p>
+                    <p class="mt-4">
+                        In my spare time I am a passionate illustrator and artist, dedicated to transforming ideas into illustrations and captivating art. With each stroke of my brush or pencil, I strive to convey emotions, tell unique stories, and ignite the imagination of viewers.
+                    </p>
+                </div>
+                <div class="flex justify-end">
+                    <img class="w-full md:w-2/3 object-contain" src="imgs/front.webp" alt="">
+                </div>
+            </div>
+            <div class="px-12 ">
+                <h3 class="font-bold text-3xl underline mb-4">Experience</h3>
+                <div class="flex flex-col gap-8">
+                    <div class="experience-container">
+                        <h4 class="font-bold text-lg md:text-2xl">Web Designer / Developer <span class="hidden md:inline font-normal text-sm italic">at Power Biztonságtechnika Kft.</span></h4>
+                        <span class="block md:hidden font-normal text-sm italic">at Power Biztonságtechnika Kft.</span>
+                        <p class="mt-4 ">
                             During my tenure, I played a key role in developing and maintaining a PHP Laravel + Vite webshop. I designed the web front-end using modern technologies (HTML5, CSS3 + TailwindCSS, JavaScript ES6) while following corporate guidelines for semantics and accessibility. Additionally, I managed the office IT environment, ensuring system and network security. I provided valuable UX recommendations to improve the user experience and actively contributed to marketing web activities, achieving successful outcomes and company growth. Overall, my experience at POWER showcased my expertise in web development, IT management, UX principles, and marketing, positively impacting organizational success.
                         </p>
+                        <span class="text-sm">Sep 2022 - Present</span>
                     </div>
-                    <span class="-mt-2 text-xs">Sep 2022 - Present</span>
-                </div>
-                <div class="">
-                    <h4 class="font-bold experience-title cursor-pointer">Programming Teacher <span class="font-normal text-xs italic">at Logiscool Ltd.</span></h4>
-                    <div class="hidden experience-description">
-                        <p class="mt-2">
+                    <div class="experience-container">
+                        <h4 class="font-bold text-lg md:text-2xl">Programming Teacher <span class="hidden md:inline font-normal text-sm italic">at Logiscool Ltd.</span></h4>
+                        <span class="md:hidden font-normal text-sm italic">at Logiscool Ltd.</span>
+                        <p class="mt-4 ">
                             As an educator, I had the privilege of teaching elementary school students the fundamentals of JavaScript programming. I found great joy in using programming games as an engaging and enjoyable method to introduce them to basic algorithms and demonstrate the power of logical reasoning. It's incredibly rewarding to witness their understanding grow as they apply these principles and prove theorems through coding.
                         </p>
+                        <span class="text-sm">Mar 2022 - Sep 2022</span>
                     </div>
-                    <span class="-mt-2 text-xs">Mar 2022 - Sep 2022</span>
-                </div>
-                <div class="">
-                    <h4 class="font-bold experience-title cursor-pointer">Customer Sales Representative <span class="font-normal text-xs italic">at Arrow Electronics</span></h4>
-                    <div class="hidden experience-description">
-                        <p class="mb-4 mt-2">
+                    <div class="experience-container">
+                        <h4 class="font-bold text-lg md:text-2xl">Customer Sales Representative <span class="hidden md:inline font-normal text-sm italic">at Arrow Electronics</span></h4>
+                        <span class="md:hidden font-normal text-sm italic">at Arrow Electronics</span>
+                        <p class="mt-4 ">
                             During my tenure, I excelled in a dynamic role within the Sales Work Bench (SWB) system. From order inception to accounting and modifications, I thrived in this exhilarating environment. Leveraging Excel, I drove data insights and business growth through intricate calculations, strategic statements, and reports. Utilizing Pivot tables, I extracted meaningful patterns and trends. With macros, I streamlined processes and boosted productivity, eliminating inefficiencies.
                         </p>
+                        <span class="text-sm">Jun 2021 - Mar 2022</span>
                     </div>
-                    <span class="-mt-2 text-xs">Jun 2021 - Mar 2022</span>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="contact">
-        <div class="flex flex-col justify-between pt-12 px-4">
-            <h2 class="text-center sm:text-left text-6xl font-black">Contact</h2>
         </div>
     </section>
 
+    <footer>
+        <div class="mt-10 p-12 text-center border-t-2 border-black">
+            <p class="text-sm sm:text-lg">&copy; 2023 Zoltan N.Veres. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 

@@ -102,7 +102,13 @@ export const projectsArr = [
     {
         title: "Pokemon APP-i",
         image: "./imgs/uc.jpeg",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        description: " built with HTML, CSS, and JS, it utilizes a REST API for seamless integration.",
         link: "./projects/PokeApp/index.html"
+    },
+    {
+        title: "",
+        image: "./imgs/uc.jpeg",
+        description: " ",
+        link: ""
     }
 ];
