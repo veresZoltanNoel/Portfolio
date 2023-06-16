@@ -91,18 +91,21 @@ export const projectsArr = [
         title: "Calculator App",
         image: "./imgs/calculator_img.webp",
         description: "built with HTML, CSS, and JS. Perform arithmetic calculations with error handling, history tracking, and persistent storage.",
-        link: "./projects/Calculator/index.html"
+        link: "./projects/Calculator/index.html",
+        isInDevelopment: false
     },
     {
         title: "To-Do App",
         image: "./imgs/toDo_img.webp",
         description: "built with HTML, CSS, and JS. Create, track, and delete tasks easily. Persistent storage using localStorage.",
-        link: "./projects/ToDo/index.html"
+        link: "./projects/ToDo/index.html",
+        isInDevelopment: false
     },
     {
         title: "Pokemon APP-i",
-        image: "./imgs/uc.jpeg",
+        image: "./imgs/pokemonAppi_img.webp",
         description: " built with HTML, CSS, and JS, it utilizes a REST API for seamless integration.",
-        link: "./projects/PokeApp/index.html"
+        link: "./projects/PokeApp/index.html",
+        isInDevelopment: true
     }
 ];

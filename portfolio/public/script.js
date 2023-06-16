@@ -21,6 +21,7 @@ function createSkillElement (skill) {
     icon.className ="w-8 h-8"
     icon.title = `${skill.name} icon`
     icon.src = `./imgs/icon/${skill.icon}.svg`;
+    icon.loading = 'lazy'
 
     title.textContent = skill.name
     title.style.color = skill.color
@@ -98,14 +99,14 @@ function createProjectCard(project) {
   const cardBody = document.createElement('div');
   const title = document.createElement('h3');
   const description = document.createElement('p');
+  const badge = document.createElement('span');
 
-
-
-  card.classList.add('project-card', 'rounded-lg', 'overflow-hidden', 'shadow-lg', 'w-3/4','cursor-pointer');
+  card.classList.add('project-card', 'rounded-lg', 'overflow-hidden', 'shadow-lg', 'w-3/4', 'cursor-pointer');
 
   image.classList.add('w-full');
   image.src = project.image;
   image.alt = project.title;
+  image.loading = 'lazy'
   image.style.filter = 'grayscale(100%)';
   image.style.transition = 'filter .7s ease';
 
@@ -116,6 +117,14 @@ function createProjectCard(project) {
 
   description.classList.add('text-gray-700', 'mt-2');
   description.textContent = project.description;
+
+  // Add badge for projects in development
+  if (project.isInDevelopment) {
+    badge.classList.add('bg-red-500', 'text-white', 'px-2', 'py-1', 'text-xs', 'absolute', 'top-2', 'right-2','z-50');
+    badge.textContent = 'In Development';
+    card.classList.add('relative');
+    card.appendChild(badge);
+  }
 
   card.appendChild(image);
   card.appendChild(cardBody);
@@ -138,6 +147,7 @@ function createProjectCard(project) {
 
   return card;
 }
+
 
 
 projectsArr.forEach((project) => {
