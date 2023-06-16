@@ -75,3 +75,10 @@ margin: 0 auto;
 .filter-list li:hover {
   background-color: #d1d1d1;
 }
+.pokemon-container {
+  background-color: var(--fire-color); /* Itt állíthatod be a kívánt színt */
+  background-image: url('imgs/Névtelen-2.png'); /* A mintakép elérési útja */
+}
+.pokemon{
+  background-color: #ffffff70;
+}

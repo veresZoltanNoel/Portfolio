@@ -5,10 +5,10 @@
 html,
 body {
     background:
-    conic-gradient(from -45deg at calc(100%/3) calc(100%/3), #fdfdfd 90deg, #0000 0),
-    conic-gradient(from -135deg at calc(100%/3) calc(2*100%/3), #fdfdfd 90deg, #ffffff 0 135deg, #0000 0),
-    conic-gradient(from 135deg at calc(2*100%/3) calc(2*100%/3), #fdfdfd 90deg, #ffffff 0 135deg, #0000 0),
-    conic-gradient(from 45deg at calc(2*100%/3) calc(100%/3), #fdfdfd 90deg, #ffffff 0 135deg, #0000 0,#fdfdfd 0 225deg,#ffffff 0);
+    conic-gradient(from -45deg at calc(100%/3) calc(100%/3), #efefef 90deg, #0000 0),
+    conic-gradient(from -135deg at calc(100%/3) calc(2*100%/3), #efefef 90deg, #ffffff 0 135deg, #0000 0),
+    conic-gradient(from 135deg at calc(2*100%/3) calc(2*100%/3), #efefef 90deg, #ffffff 0 135deg, #0000 0),
+    conic-gradient(from 45deg at calc(2*100%/3) calc(100%/3), #efefef 90deg, #ffffff 0 135deg, #0000 0,#efefef 0 225deg,#ffffff 0);
 background-size: 20px 20px;
 scroll-behavior: smooth;
 

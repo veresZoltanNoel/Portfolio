@@ -6,7 +6,7 @@ About Me
 
 Skills
 Technical Skills: [List your technical skills and areas of expertise]
-Soft Skills: [Highlight your soft skills such as communication, leadership, problem-solving, etc.]
+Soft Skills: [Problem solving, creative thinking,]
 Tools and Technologies: [Mention the tools, programming languages, frameworks, or software you are proficient in]
 Projects
 Project 1: [Project Name]
