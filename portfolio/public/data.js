@@ -102,6 +102,13 @@ export const projectsArr = [
         isInDevelopment: false
     },
     {
+        title: "Landing design",
+        image: "./imgs/landingDesign_img.webp",
+        description: "built with HTML, CSS, and JS.",
+        link: "./projects/Landing/index.html",
+        isInDevelopment: false
+    },
+    {
         title: "Pokemon APP-i",
         image: "./imgs/pokemonAppi_img.webp",
         description: " built with HTML, CSS, and JS, it utilizes a REST API for seamless integration.",
