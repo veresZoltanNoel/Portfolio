@@ -32,46 +32,23 @@ h1{
     font-family: 'Pokemon Solid', sans-serif;
 }
 section{
-max-width: 1440px;
-margin: 0 auto;
+    max-width: 1440px;
+    margin: 0 auto;
 }
-.poke-container{
-    z-index: -1;
-}
-/* Style the active state of the filter button */
-.filter-button.clicked {
-  border: 1.5px solid black;
-  opacity: 0.7;
-  scale: .95;
-}
-/* Style the clicked state of the filter button */
-.filter-button.clicked::after {
-  content: "";
-  position: absolute;
-  top: -7px;
-  right: -7px;
-  width: 25px;
-  height: 25px;
-  background: url(pokemonTypes/close.svg) no-repeat center;
-  background-size: cover;
-}
+.lightbox {
+    background-color: rgba(0, 0, 0, 0.653);
 
+  }
 
-.filter-list li {
-  padding: 10px;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  -webkit-transition: background-color 0.2s ease;
-  -moz-transition: background-color 0.2s ease;
-  -ms-transition: background-color 0.2s ease;
-  -o-transition: background-color 0.2s ease;
-  width: 150px; /* Set a fixed width for the li elements */
-}
+  .lightbox-content {
+    width: 40%;
 
+    overflow: auto;
+    aspect-ratio: 1/1;
+  }
 
-.filter-list li:hover {
-  background-color: #d1d1d1;
-}
+  .lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+
+  }

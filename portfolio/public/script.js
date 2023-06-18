@@ -120,7 +120,7 @@ function createProjectCard(project) {
 
   // Add badge for projects in development
   if (project.isInDevelopment) {
-    badge.classList.add('bg-red-500', 'text-white', 'px-2', 'py-1', 'text-xs', 'absolute', 'top-2', 'right-2','z-50');
+    badge.classList.add('bg-red-700', 'text-white','font-black','tracking-widest', 'px-2', 'py-1', 'text-xs', 'absolute', 'top-2', 'right-2','z-50');
     badge.textContent = 'In Development';
     card.classList.add('relative');
     card.appendChild(badge);

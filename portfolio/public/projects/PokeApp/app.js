@@ -4,47 +4,7 @@ const pokemonTypes = [
   "normal", "fire", "water", "electric", "grass", "ice", "fighting", "poison", "ground", "flying",
   "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy"
 ];
-
-createFilterBar(pokemonTypes);
-
-const filterButtons = document.querySelectorAll(".filter-button");
-const filteredPokemons = document.getElementById("filtered-pokemons");
-let filteredPokemontypes = [];
-
-filterButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    const selectedType = button.id;
-    button.classList.toggle('active');
-
-    // Toggle the selection
-    if (filteredPokemontypes.includes(selectedType)) {
-      filteredPokemontypes = filteredPokemontypes.filter(type => type !== selectedType);
-    } else {
-      filteredPokemontypes.push(selectedType);
-    }
-
-    filterPokemons(filteredPokemontypes);
-  });
-});
-
-
-
-// Add click event listeners to each list item
-const sortItems = document.querySelectorAll("#sort-by li");
-sortItems.forEach(li => {
-  li.addEventListener("click", function() {
-    const selectedOption = this.getAttribute("data-value");
-    // Remove active class from all li elements
-    sortItems.forEach(item => {
-      item.classList.remove("active");
-    });
-    // Add active class to the clicked li element
-    this.classList.add("active");
-
-    sortPokemons(selectedOption);
-  });
-});
-
+createTypeFilter(pokemonTypes)
 // Fetch data from the base URL
 fetch(baseUrl)
   .then(response => {
@@ -72,32 +32,23 @@ fetch(baseUrl)
           return response.json();
         })
         .then(pokemonData => {
-
           // Get the container element to hold Pokémon information
           const pokemonsContainer = document.getElementById('pokemons');
+          const pokemonImageUrl = pokemonData.sprites.other.dream_world.front_default;
 
-          // Extract the Pokémon's name and image URL
-          const pokemonName = pokemonData.name;
-          const pokemonImageUrl = pokemonData.sprites.front_default;
           // Check if the Pokémon has an image URL
-          if (pokemonImageUrl) {
-            // Create HTML elements to display Pokémon name, image, and stats
-            const container = createPokemonContainer();
-            const name = createPokemonName(pokemonName);
-            const image = createPokemonImage(pokemonImageUrl, pokemonName)
-            const statContainer = createPokemonStats(pokemonData.stats)
-            const hpDiv = createHpElement(pokemonData.stats);
-            const cardTopDesign = createcardTopDesignElement();
-            const typeImgContainerElement = createPokemonTypesAndColorDesign(pokemonData.types, name, cardTopDesign);
+          if (pokemonImageUrl != null) {
+            const pokemonCardElement = createPokemonCard(pokemonData.types, pokemonData.name);
+            const pokemonCardTopElement = createPokemonCardTop(pokemonImageUrl, pokemonData.name);
+            const pokemonCardBottomElement = createPokemonCardBottom(pokemonData.id, pokemonData.name, pokemonData.types);
 
-            // Append child elements to the container element
-            appendChildElements(container,[hpDiv,name,image]);
+            appendChildElements(pokemonCardElement.firstElementChild, [pokemonCardTopElement, pokemonCardBottomElement]);
 
-            // Append child elements to the container element
-            appendChildElements(container,[...typeImgContainerElement, ...statContainer, cardTopDesign]);
+            pokemonCardElement.addEventListener('click', () => {
+              openLightbox(pokemonImageUrl, pokemonData.name, pokemonData.id, pokemonTypes);
+            });
 
-            // Append the container element to the pokemonsContainer
-            pokemonsContainer.appendChild(container);
+            pokemonsContainer.appendChild(pokemonCardElement);
           }
         })
         .catch(error => {
@@ -109,7 +60,58 @@ fetch(baseUrl)
     pokemonUrls.forEach(url => {
       fetchPokemonData(url);
     });
-  })
-  .catch(error => {
-    console.log(error);
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.toLowerCase();
+
+      // Iterate over the existing Pokémon cards and hide/show them based on the search term
+      const pokemonCards = document.querySelectorAll('.pokemon-card');
+      pokemonCards.forEach(pokemonCard => {
+        const pokemonName = pokemonCard.getAttribute('id').toLowerCase();
+
+        if (pokemonName.includes(searchTerm)) {
+          pokemonCard.style.display = 'block';
+        } else {
+          pokemonCard.style.display = 'none';
+        }
+      });
+    });
+
+  // Sorting functionality
+  const sortDropdown = document.getElementById('sortDropdown');
+  sortDropdown.addEventListener('change', () => {
+    const selectedOption = sortDropdown.value;
+
+
+ // Sort the existing Pokémon cards based on the selected sorting option
+ const pokemonCards = Array.from(document.querySelectorAll('.pokemon-card'));
+ pokemonCards.sort((a, b) => {
+   const aId = parseInt(a.querySelector('.pokemon-id').textContent);
+   const bId = parseInt(b.querySelector('.pokemon-id').textContent);
+
+   switch (selectedOption) {
+     case 'a-z':
+       return a.getAttribute('id').localeCompare(b.getAttribute('id'));
+     case 'z-a':
+       return b.getAttribute('id').localeCompare(a.getAttribute('id'));
+     case 'low-to-high':
+       return aId - bId;
+     case 'high-to-low':
+       return bId - aId;
+     default:
+       return 0;
+   }
+ });
+
+  // Re-append the sorted Pokémon cards to the container
+  const pokemonsContainer = document.getElementById('pokemons');
+  pokemonCards.forEach(pokemonCard => {
+    pokemonsContainer.appendChild(pokemonCard);
   });
+});
+})
+.catch(error => {
+  console.log(error);
+});
