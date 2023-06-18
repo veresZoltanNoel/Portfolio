@@ -123,7 +123,8 @@ background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 50%,rgba
     background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 50%,rgba(0,0,0,0.7) 75%, #000 100%), url(./imgs/08.jpg) center center no-repeat;
     background-size: cover;
 }
-.box1:hover, .box2:hover, .box3:hover, .box4:hover{
+.box1:hover, .box2:hover, .box3:hover, .box4:hover,
+.box5:hover, .box6:hover, .box7:hover, .box8:hover{
     transform: translateY(20px);
     -webkit-transform: translateY(20px);
     -moz-transform: translateY(20px);

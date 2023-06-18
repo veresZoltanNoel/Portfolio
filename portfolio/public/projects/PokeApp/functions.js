@@ -78,74 +78,133 @@
 
     return pokemonCardBottom;
   }
-// Update the createTypeFilter function to populate the filter dropdown and add filtering functionality
-function createTypeFilter(types) {
-  const select = document.getElementById("filterDropdown");
+  // Update the createTypeFilter function to populate the filter dropdown and add filtering functionality
+  function createTypeFilter(types) {
+    const select = document.getElementById("filterDropdown");
 
-  types.forEach(type => {
-    const option = document.createElement("option");
-    option.value = type;
-    option.textContent = type;
-    select.appendChild(option);
-  });
-
-  // Add event listener to the filter dropdown
-  select.addEventListener("change", () => {
-    const selectedType = select.value.toLowerCase();
-
-    // Iterate over the existing Pokémon cards and hide/show them based on the selected type
-    const pokemonCards = document.querySelectorAll(".pokemon-card");
-    pokemonCards.forEach(pokemonCard => {
-      const pokemonTypes = Array.from(pokemonCard.classList).filter(className => className.startsWith("type-"));
-
-      if (selectedType === "none") {
-        pokemonCard.style.display = "block";
-      } else if (pokemonTypes.includes(`type-${selectedType}`)) {
-        pokemonCard.style.display = "block";
-      } else {
-        pokemonCard.style.display = "none";
-      }
+    types.forEach(type => {
+      const option = document.createElement("option");
+      option.value = type;
+      option.textContent = type;
+      select.appendChild(option);
     });
-  });
+
+    // Add event listener to the filter dropdown
+    select.addEventListener("change", () => {
+      const selectedType = select.value.toLowerCase();
+
+      // Iterate over the existing Pokémon cards and hide/show them based on the selected type
+      const pokemonCards = document.querySelectorAll(".pokemon-card");
+      pokemonCards.forEach(pokemonCard => {
+        const pokemonTypes = Array.from(pokemonCard.classList).filter(className => className.startsWith("type-"));
+
+        if (selectedType === "none") {
+          pokemonCard.style.display = "block";
+        } else if (pokemonTypes.includes(`type-${selectedType}`)) {
+          pokemonCard.style.display = "block";
+        } else {
+          pokemonCard.style.display = "none";
+        }
+      });
+    });
+  }
+
+  function openLightbox(imageUrl, name, stats, types) {
+    // Create the lightbox element
+    const lightbox = document.createElement('div');
+    lightbox.classList.add('lightbox','fixed','top-0','left-0','w-full','h-full','flex','justify-center','items-center','z-50');
+
+    // Create a container element for the content inside the lightbox
+    const contentContainer = document.createElement('div');
+    contentContainer.classList.add('lightbox-content-container','p-5','rounded-md','text-center');
+    const pokemonTypes = []
+    for (const { type } of types) {
+      pokemonTypes.push(type.name);
+      if (pokemonTypes.length === 1) {
+        contentContainer.style.backgroundColor = `var(--${type.name}-color)`;
+      }
+      else{
+        contentContainer.style.backgroundImage= `linear-gradient(to bottom right, var(--${pokemonTypes[0]}-color) 50%, var(--${pokemonTypes[1]}-color) 50%)`;
+      }
+    }
+
+    const content = document.createElement("div");
+    content.classList.add("grid","grid-cols-2");
+    // Create the image element inside the lightbox
+    const image = document.createElement('img');
+    image.src = imageUrl;
+    image.alt = 'Pokemon Image';
+    image.style.width = "250px";
+
+    // Create Name element
+    const nameElement = document.createElement('h2');
+    nameElement.textContent = name;
+
+    // Create the radar chart element
+    const radarChartContainer = document.createElement('div');
+    radarChartContainer.id = 'chart_div';
+
+    // Load the Google Charts library
+    let statValueArr = [];
+
+    stats.forEach(stat => {
+      statValueArr.push(stat.base_stat);
+    });
+    google.charts.load('current', {'packages':['corechart']});
+
+
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      const data = google.visualization.arrayToDataTable([
+        ['Ability', 'Value',{ role: 'style' }],
+        [`Hp`, statValueArr[0],'#ff5959'],
+        [`Attack`, statValueArr[1],'#f5ac79'],
+        [`Defense`, statValueArr[2],'#f9e079'],
+        [`Sp. Atk`, statValueArr[3],'#9db7f4'],
+        [`Sp. Def`, statValueArr[4],'#a7dc8e'],
+        [`Speed`, statValueArr[5],'#fb92b1']
+      ]);
+
+
+      const options = {
+        title: '',
+        width: 550,
+        height: 300,
+        vAxis: {
+          viewWindow: {
+            max: 255
+          }
+        },
+        legend: 'none'
+      };
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                      { calc: "stringify",
+                        sourceColumn: 1,
+                        type: "string",
+                        role: "annotation" },
+                      2]);
+
+      const chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+      chart.draw(view, options);
+    }
+
+    // Append the elements to the content container
+    content.appendChild(image);
+    contentContainer.appendChild(nameElement);
+    contentContainer.appendChild(content);
+    contentContainer.appendChild(radarChartContainer);
+
+    // Append the content container to the lightbox
+    lightbox.appendChild(contentContainer);
+
+    // Append the lightbox to the body
+    document.body.appendChild(lightbox);
+
+    // Add event listener to close the lightbox on click
+    lightbox.addEventListener('click', () => {
+      lightbox.remove();
+    });
 }
-function openLightbox(imageUrl, pokemonName, pokemonId, pokemonTypes) {
-  // Create the lightbox element
-  const lightbox = document.createElement('div');
-  lightbox.classList.add('lightbox','fixed','top-0','left-0','w-full','h-full','flex','justify-center','items-center','z-50');
 
-  // Create a container element for the content inside the lightbox
-  const contentContainer = document.createElement('div');
-  contentContainer.classList.add('lightbox-content','p-5','rounded-md','text-center','bg-white');
-
-  // Create the image element inside the lightbox
-  const image = document.createElement('img');
-  image.src = imageUrl;
-  image.alt = 'Pokemon Image';
-
-  // Create elements for additional data
-  const nameElement = document.createElement('h2');
-  nameElement.textContent = pokemonName;
-
-  const idElement = document.createElement('span');
-  idElement.textContent = `ID: ${pokemonId}`;
-
-  const typesElement = document.createElement('p');
-  typesElement.textContent = `Types: ${pokemonTypes.join(', ')}`;
-
-  // Append the elements to the content container
-  contentContainer.appendChild(image);
-  contentContainer.appendChild(nameElement);
-  contentContainer.appendChild(idElement);
-  contentContainer.appendChild(typesElement);
-
-  // Append the content container to the lightbox
-  lightbox.appendChild(contentContainer);
-
-  // Append the lightbox to the body
-  document.body.appendChild(lightbox);
-
-  // Add event listener to close the lightbox on click
-  lightbox.addEventListener('click', () => {
-    lightbox.remove();
-  });
-}

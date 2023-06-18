@@ -9,4 +9,3 @@ window.addEventListener("scroll", () => {
     last.style.bottom = value * 0.5 + "px";
     text.style.top = value * 1 + "px";
 })
-//asdasfdasfasfa

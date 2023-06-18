@@ -41,11 +41,11 @@ fetch(baseUrl)
             const pokemonCardElement = createPokemonCard(pokemonData.types, pokemonData.name);
             const pokemonCardTopElement = createPokemonCardTop(pokemonImageUrl, pokemonData.name);
             const pokemonCardBottomElement = createPokemonCardBottom(pokemonData.id, pokemonData.name, pokemonData.types);
-
+            console.log();
             appendChildElements(pokemonCardElement.firstElementChild, [pokemonCardTopElement, pokemonCardBottomElement]);
 
             pokemonCardElement.addEventListener('click', () => {
-              openLightbox(pokemonImageUrl, pokemonData.name, pokemonData.id, pokemonTypes);
+              openLightbox(pokemonImageUrl, pokemonData.name, pokemonData.stats, pokemonData.types);
             });
 
             pokemonsContainer.appendChild(pokemonCardElement);

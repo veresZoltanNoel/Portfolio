@@ -41,7 +41,7 @@ section{
   }
 
   .lightbox-content {
-    width: 40%;
+    width: 80%;
 
     overflow: auto;
     aspect-ratio: 1/1;
