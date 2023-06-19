@@ -30,6 +30,9 @@ body {
 
 h1{
     font-family: 'Pokemon Solid', sans-serif;
+    color: white;
+    font-size: 3rem;
+
 }
 section{
     max-width: 1440px;
@@ -52,3 +55,15 @@ section{
     max-height: 100%;
 
   }
+  @media only screen and (min-width: 768px) {
+    h1{
+      font-size: 6rem;
+    }
+
+}
+  @media only screen and (min-width: 1024px) {
+    h1{
+      font-size: 9rem;
+    }
+
+}

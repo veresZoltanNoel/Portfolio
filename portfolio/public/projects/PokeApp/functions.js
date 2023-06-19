@@ -57,27 +57,33 @@
     const pokemonId = document.createElement("span")
     const pokemonName = document.createElement("h2")
     const pokemonTypes = document.createElement("span")
-
-
+  
     pokemonCardBottom.classList.add("flex", "flex-col", "gap-4");
     pokemonIdContainer.classList.add("flex-0");
     pokemonId.classList.add("pokemon-id","bg-gray-300", "rounded-full", "py-1", "px-4");
     pokemonId.textContent = `${id}`;
-    pokemonName.classList.add("font-bold", "text-2xl");
+    pokemonName.classList.add("font-bold", "text-lg");
     pokemonName.textContent = `${name}`;
     pokemonTypes.textContent = "Type: ";
-
+  
     for (const { type } of types) {
       pokemonTypes.textContent += ` ${type.name}`;
     }
-
+  
     pokemonIdContainer.appendChild(pokemonId);
     pokemonCardBottom.appendChild(pokemonIdContainer);
     pokemonCardBottom.appendChild(pokemonName);
     pokemonCardBottom.appendChild(pokemonTypes);
-
+  
+    // Set maximum width for the Pokémon name element
+    pokemonName.style.maxWidth = "200px";
+    pokemonName.style.overflow = "hidden";
+    pokemonName.style.textOverflow = "ellipsis";
+    pokemonName.style.whiteSpace = "nowrap";
+  
     return pokemonCardBottom;
   }
+  
 
   function createTypeFilter(types) {
     const select = document.getElementById("filterDropdown");

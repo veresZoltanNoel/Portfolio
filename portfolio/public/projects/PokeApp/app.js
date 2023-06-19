@@ -34,7 +34,7 @@ fetch(baseUrl)
         .then(pokemonData => {
           // Get the container element to hold Pokémon information
           const pokemonsContainer = document.getElementById('pokemons');
-          const pokemonImageUrl = pokemonData.sprites.other.dream_world.front_default;
+          const pokemonImageUrl = pokemonData.sprites.front_default;
 
           // Check if the Pokémon has an image URL
           if (pokemonImageUrl != null) {
@@ -49,6 +49,7 @@ fetch(baseUrl)
             });
 
             pokemonsContainer.appendChild(pokemonCardElement);
+          console.log(pokemonData);
           }
         })
         .catch(error => {
