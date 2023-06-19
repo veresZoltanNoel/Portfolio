@@ -1,4 +1,4 @@
-#loading-screen {
+  #loading-screen {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,13 +11,13 @@
     justify-content: center;
     z-index: 9999;
   }
-  
+
   .pokeball {
     animation: jump 1s infinite;
     width: 80px;
     height: 80px;
   }
-  
+
   .loading-bar {
     width: 200px;
     height: 10px;
@@ -29,8 +29,8 @@
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
-}
-  
+  }
+
   .loading-bar-progress {
     width: 0;
     height: 100%;
@@ -41,8 +41,8 @@
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     animation: progress 5s linear forwards;
-}
-  
+  }
+
   .loading-bar-label {
     position: absolute;
     bottom: -35px;
@@ -53,7 +53,7 @@
     font-weight: bold;
     color: #333;
   }
-  
+
   @keyframes jump {
     0%, 100% {
       transform: translateY(0);
@@ -62,7 +62,7 @@
       transform: translateY(-40px);
     }
   }
-  
+
   @keyframes progress {
     0% {
       width: 0;
@@ -71,4 +71,3 @@
       width: 100%;
     }
   }
-  

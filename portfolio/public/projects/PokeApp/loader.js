@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
     let progress = 0;
     const increment = 100 / 50; // Fill the loading bar evenly in 50 steps
     const intervalDuration = 100; // Adjust this value to control the smoothness of the animation
-    
+
     const startTime = performance.now();
     const intervalId = setInterval(() => {
       const elapsedTime = performance.now() - startTime;
@@ -14,7 +14,7 @@ window.addEventListener('load', () => {
       }
       loadingBar.style.width = `${progress}%`;
       loadingBarLabel.textContent = `${Math.round(progress)}%`;
-    
+
       if (progress >= 100) {
         clearInterval(intervalId);
         setTimeout(() => {
@@ -24,4 +24,3 @@ window.addEventListener('load', () => {
       }
     }, intervalDuration); // Repeat the interval every intervalDuration milliseconds
   });
-  
