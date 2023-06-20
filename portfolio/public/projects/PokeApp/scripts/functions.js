@@ -75,7 +75,6 @@
     pokemonCardBottom.appendChild(pokemonName);
     pokemonCardBottom.appendChild(pokemonTypes);
 
-    // Set maximum width for the Pokémon name element
     pokemonName.style.maxWidth = "200px";
     pokemonName.style.overflow = "hidden";
     pokemonName.style.textOverflow = "ellipsis";
@@ -83,8 +82,6 @@
 
     return pokemonCardBottom;
   }
-
-
   function createTypeFilter(types) {
     const select = document.getElementById("filterDropdown");
 

@@ -1,70 +1,138 @@
 @import url('https://fonts.cdnfonts.com/css/pokemon-solid');
 :root{
---normal-color:#919aa2;
---fighting-color:#cf3e69;
---flying-color:#90a9de;
---poison-color:#ac6ac9;
---ground-color:#da7844;
---rock-color:#c8b88c;
---bug-color:#91c228;
---ghost-color:#5169ae;
---steel-color:#598fa2;
---fire-color:#ff9d53;
---water-color:#4c91d6;
---grass-color:#63bc5b;
---electric-color:#f3d338;
---psychic-color:#f97277;
---ice-color:#75cfc1;
---dragon-color:#036dc5;
---dark-color:#5a5266;
---fairy-color:#ed90e7;
-}
-body {
-    background-image: url("./imgs/body_bg.png");
-    background-repeat: repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment: fixed;
+  --normal-color:#919aa2;
+  --fighting-color:#cf3e69;
+  --flying-color:#90a9de;
+  --poison-color:#ac6ac9;
+  --ground-color:#da7844;
+  --rock-color:#c8b88c;
+  --bug-color:#91c228;
+  --ghost-color:#5169ae;
+  --steel-color:#598fa2;
+  --fire-color:#ff9d53;
+  --water-color:#4c91d6;
+  --grass-color:#63bc5b;
+  --electric-color:#f3d338;
+  --psychic-color:#f97277;
+  --ice-color:#75cfc1;
+  --dragon-color:#036dc5;
+  --dark-color:#5a5266;
+  --fairy-color:#ed90e7;
 }
 
+body {
+  background-image: url("./imgs/body_bg.png");
+  background-repeat: repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
 
 h1{
     font-family: 'Pokemon Solid', sans-serif;
     color: white;
     font-size: 3rem;
-
 }
+
 section{
     max-width: 1440px;
     margin: 0 auto;
 }
 
 .lightbox {
-    background-color: rgba(0, 0, 0, 0.653);
-
-  }
-
-  .lightbox-content {
-    width: 80%;
-
-    overflow: auto;
-    aspect-ratio: 1/1;
-  }
-
-  .lightbox img {
-    max-width: 100%;
-    max-height: 100%;
-
-  }
-  @media only screen and (min-width: 768px) {
-    h1{
-      font-size: 6rem;
-    }
-
+  background-color: rgba(0, 0, 0, 0.653);
 }
-  @media only screen and (min-width: 1024px) {
-    h1{
-      font-size: 9rem;
-    }
 
+.lightbox-content {
+  width: 80%;
+  overflow: auto;
+  aspect-ratio: 1/1;
 }
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+}
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffeed0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.pokeball {
+  animation: jump 1s infinite;
+  width: 80px;
+  height: 80px;
+}
+
+.loading-bar {
+  width: 200px;
+  height: 10px;
+  background-color: #ccc;
+  margin-top: 20px;
+  position: relative;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.loading-bar-progress {
+  width: 0;
+  height: 100%;
+  background-color: #ee6d6d;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  animation: progress 5s linear forwards;
+}
+
+.loading-bar-label {
+  position: absolute;
+  bottom: -35px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-40px);
+  }
+}
+
+@keyframes progress {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  h1{
+    font-size: 6rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  h1{
+    font-size: 9rem;
+  }}
