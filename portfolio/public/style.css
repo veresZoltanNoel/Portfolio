@@ -88,41 +88,22 @@ header,footer, section{
     font-weight: bold;
 }
 
-.hamburger-icon {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: #000;
-    transition: background-color 0.3s ease;
+.project-card {
+  transition: transform 0.3s;
 }
-.hamburger-btn.active .hamburger-icon:nth-child(1) {
-    transform: rotate(45deg) translate(2px, 2px);
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+
+
+@media (max-width: 900px) {
+  #name-desktop {
+    font-size: 6.5rem;
+    line-height: 6rem;
   }
-
-  .hamburger-btn.active .hamburger-icon:nth-child(2) {
-    opacity: 0;
+  #title-desktop{
+    font-size: 3rem;
   }
-
-  .hamburger-btn.active .hamburger-icon:nth-child(3) {
-    transform: rotate(-45deg) translate(2px, -2px);
-  }
-
-  .project-card {
-    transition: transform 0.3s;
-  }
-
-  .project-card:hover {
-    transform: translateY(-5px);
-  }
-
-
-
-  @media (max-width: 900px) {
-    #name-desktop {
-      font-size: 6.5rem;
-      line-height: 6rem;
-    }
-    #title-desktop{
-      font-size: 3rem;
-    }
-  }
+}

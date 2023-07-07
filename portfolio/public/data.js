@@ -91,28 +91,35 @@ export const projectsArr = [
         title: "Calculator App",
         image: "./imgs/calculator_img.webp",
         description: "built with HTML, CSS, and JS. Perform arithmetic calculations with error handling, history tracking, and persistent storage.",
-        link: "./projects/Calculator/index.html",
+        link: "https://vzn-calculator.web.app",
         isInDevelopment: false
     },
     {
         title: "To-Do App",
         image: "./imgs/toDo_img.webp",
-        description: "built with HTML, CSS, and JS. Create, track, and delete tasks easily. Persistent storage using localStorage.",
-        link: "./projects/ToDo/index.html",
+        description: "built with HTML, CSS, and JS. Persistent storage using localStorage.",
+        link: "https://vzn-todo.web.app",
         isInDevelopment: false
     },
     {
         title: "Landing design",
         image: "./imgs/landingDesign_img.webp",
         description: "built with HTML, CSS, and JS.",
-        link: "./projects/Landing/index.html",
+        link: "https://vzn-landing-design.web.app",
         isInDevelopment: false
     },
     {
         title: "Pokemon APP-i",
         image: "./imgs/pokemonAppi_img.webp",
         description: " built with HTML, CSS, and JS, it utilizes a REST API for seamless integration.",
-        link: "./projects/PokeApp/index.html",
+        link: "https://vzn-poke-appi.web.app",
         isInDevelopment: true
+    },
+    {
+        title: "Netflix Clone",
+        image: "./imgs/netflix_img.png",
+        description: " built with HTML, CSS",
+        link: "https://vzn-netflix-clone.web.app",
+        isInDevelopment: false
     }
 ];

@@ -84,7 +84,7 @@ function removeGrayscale() {
 document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileNav = document.getElementById('mobileNav');
-  
+
     mobileMenuBtn.addEventListener('click', function () {
       mobileNav.classList.toggle('hidden');
     });
